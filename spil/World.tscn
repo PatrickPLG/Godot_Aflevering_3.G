@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://WorldComplete.tscn" type="PackedScene" id=2]
+[ext_resource path="res://DirtAutoTile.tres" type="TileSet" id=3]
+[ext_resource path="res://RichTextLabel.gd" type="Script" id=5]
+[ext_resource path="res://Healthbar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Heart.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Fire.tscn" type="PackedScene" id=9]
+
+[node name="World" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 78.9569, 191.403 )
+
+[node name="Healthbar" parent="Player" instance=ExtResource( 6 )]
+margin_left = -79.0895
+margin_top = -166.192
+margin_right = -79.0895
+margin_bottom = -166.192
+
+[node name="TileMap" type="TileMap" parent="."]
+show_behind_parent = true
+tile_set = ExtResource( 3 )
+format = 1
+tile_data = PoolIntArray( 131086, 3, 5, 196613, 3, 1, 196614, 3, 65536, 196615, 3, 65536, 196616, 3, 2, 196622, 3, 8, 196623, 3, 65536, 196624, 3, 2, 262144, 3, 1, 262145, 3, 65536, 262146, 3, 65536, 262147, 3, 65536, 262148, 3, 65536, 262149, 3, 65540, 262150, 3, 196619, 262151, 3, 196619, 262152, 3, 131074, 262158, 3, 131073, 262159, 3, 196619, 262160, 3, 65539, 262161, 3, 2, 327680, 3, 131073, 327681, 3, 196619, 327682, 3, 196619, 327683, 3, 196619, 327684, 3, 196619, 327685, 3, 196619, 327686, 3, 196619, 327687, 3, 196619, 327688, 3, 131074, 327694, 3, 131073, 327695, 3, 196619, 327696, 3, 196619, 327697, 3, 65539, 327698, 3, 2, 327702, 3, 5, 327704, 3, 5, 327706, 3, 5, 327708, 3, 5, 393216, 3, 131073, 393217, 3, 196619, 393218, 3, 196619, 393219, 3, 196619, 393220, 3, 196619, 393221, 3, 196619, 393222, 3, 196619, 393223, 3, 196619, 393224, 3, 65539, 393225, 3, 2, 393230, 3, 131073, 393231, 3, 196619, 393232, 3, 196619, 393233, 3, 196619, 393234, 3, 65539, 393235, 3, 65536, 393236, 3, 65536, 393237, 3, 65536, 393238, 3, 131082, 393239, 3, 65536, 393240, 3, 131082, 393241, 3, 65536, 393242, 3, 131082, 393243, 3, 65536, 393244, 3, 131082, 393245, 3, 65536, 393246, 3, 65536, 393247, 3, 2, 393251, 3, 1, 393252, 3, 65536, 393253, 3, 2, 458752, 3, 131073, 458753, 3, 196619, 458754, 3, 196619, 458755, 3, 196619, 458756, 3, 196619, 458757, 3, 196619, 458758, 3, 196619, 458759, 3, 196619, 458760, 3, 196619, 458761, 3, 65539, 458762, 3, 65536, 458763, 3, 2, 458766, 3, 131073, 458767, 3, 196619, 458768, 3, 196619, 458769, 3, 196619, 458770, 3, 196619, 458771, 3, 196619, 458772, 3, 196619, 458773, 3, 196619, 458774, 3, 196619, 458775, 3, 196619, 458776, 3, 196619, 458777, 3, 196619, 458778, 3, 196619, 458779, 3, 196619, 458780, 3, 196619, 458781, 3, 196619, 458782, 3, 196619, 458783, 3, 65539, 458784, 3, 65536, 458785, 3, 65536, 458786, 3, 65536, 458787, 3, 65540, 458788, 3, 196619, 458789, 3, 131074, 524288, 3, 65537, 524289, 3, 131072, 524290, 3, 131072, 524291, 3, 131072, 524292, 3, 131072, 524293, 3, 131072, 524294, 3, 131072, 524295, 3, 131072, 524296, 3, 131072, 524297, 3, 131072, 524298, 3, 131072, 524299, 3, 65547, 524300, 3, 196609, 524301, 3, 196609, 524302, 3, 65544, 524303, 3, 131072, 524304, 3, 131072, 524305, 3, 131072, 524306, 3, 131072, 524307, 3, 131072, 524308, 3, 131072, 524309, 3, 131072, 524310, 3, 131072, 524311, 3, 131072, 524312, 3, 131072, 524313, 3, 131072, 524314, 3, 131072, 524315, 3, 131072, 524316, 3, 131072, 524317, 3, 131072, 524318, 3, 131072, 524319, 3, 131072, 524320, 3, 131072, 524321, 3, 131072, 524322, 3, 131072, 524323, 3, 131072, 524324, 3, 131072, 524325, 3, 65538 )
+
+[node name="WorldComplete" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2377.48, 370.186 )
+next_world = "res://World2.tscn"
+
+[node name="Fire" parent="." instance=ExtResource( 9 )]
+position = Vector2( 423.103, 129.438 )
+
+[node name="Fire2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 480.764, 192.482 )
+
+[node name="Fire3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 520.997, 193.649 )
+
+[node name="Fire4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 559.945, 193.649 )
+
+[node name="Fire5" parent="." instance=ExtResource( 9 )]
+position = Vector2( 607.313, 259.965 )
+
+[node name="Fire6" parent="." instance=ExtResource( 9 )]
+position = Vector2( 646.261, 258.912 )
+
+[node name="Fire7" parent="." instance=ExtResource( 9 )]
+position = Vector2( 691.524, 256.807 )
+
+[node name="Fire8" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1262.81, 63.3598 )
+
+[node name="Fire9" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1390.93, 63.8525 )
+
+[node name="Fire10" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1517.55, 63.3598 )
+
+[node name="Fire11" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1647.18, 63.3598 )
+
+[node name="Fire12" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1889.61, 192.202 )
+
+[node name="Fire13" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1928.47, 192.202 )
+
+[node name="Fire14" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1965.48, 192.202 )
+
+[node name="Fire15" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2004.35, 192.202 )
+
+[node name="Fire16" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2041.36, 192.202 )
+
+[node name="Heart" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1128.34, 126.357 )
+
+[node name="Heart2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1739.05, 124.507 )
+
+[node name="Heart3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2090.66, 127.357 )
+
+[node name="TIP" type="RichTextLabel" parent="."]
+margin_left = 409.0
+margin_top = 119.0
+margin_right = 577.0
+margin_bottom = 154.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+scroll_active = false
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="HP" from="Player" to="Player/Healthbar" method="_on_Player_HP"]
