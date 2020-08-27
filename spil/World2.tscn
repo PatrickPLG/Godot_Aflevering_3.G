@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://DirtAutoTile.tres" type="TileSet" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://WorldComplete.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Healthbar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fire.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Heart.tscn" type="PackedScene" id=7]
+
+[node name="World2" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 34, 285.851 )
+
+[node name="Healthbar" parent="Player" instance=ExtResource( 5 )]
+margin_left = -29.0
+margin_top = -173.789
+margin_right = -29.0
+margin_bottom = -173.789
+
+[node name="WorldComplete" parent="." instance=ExtResource( 3 )]
+position = Vector2( 607.052, 239.907 )
+next_world = "res://World.tscn"
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 131070, 3, 5, 65548, 3, 1, 65549, 3, 2, 196606, 3, 8, 196607, 3, 2, 131084, 3, 131073, 131085, 3, 131074, 262142, 3, 131073, 262143, 3, 131074, 196610, 3, 1, 196611, 3, 65536, 196612, 3, 65536, 196613, 3, 65536, 196614, 3, 65536, 196615, 3, 2, 196620, 3, 131073, 196621, 3, 131074, 327678, 3, 131073, 327679, 3, 131074, 262145, 3, 1, 262146, 3, 65540, 262147, 3, 196619, 262148, 3, 196619, 262149, 3, 196619, 262150, 3, 196619, 262151, 3, 65539, 262152, 3, 65536, 262153, 3, 65536, 262154, 3, 65536, 262155, 3, 65536, 262156, 3, 65540, 262157, 3, 131074, 393214, 3, 65537, 393215, 3, 65547, 327680, 3, 196609, 327681, 3, 65544, 327682, 3, 131072, 327683, 3, 131072, 327684, 3, 131072, 327685, 3, 131072, 327686, 3, 131072, 327687, 3, 131072, 327688, 3, 131072, 327689, 3, 131072, 327690, 3, 131072, 327691, 3, 131072, 327692, 3, 131072, 327693, 3, 65538 )
+
+[node name="Fire" parent="." instance=ExtResource( 6 )]
+position = Vector2( -81.0552, 1.01718 )
+
+[node name="Fire2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 8.94484, -63.9828 )
+
+[node name="Fire3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 48.9448, -63.9828 )
+
+[node name="Heart" parent="." instance=ExtResource( 7 )]
+position = Vector2( 136.519, -64.2565 )
+[connection signal="HP" from="Player" to="Player/Healthbar" method="_on_Player_HP"]
