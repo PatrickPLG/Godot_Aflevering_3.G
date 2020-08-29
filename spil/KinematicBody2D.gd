@@ -8,7 +8,7 @@ const UP = Vector2(0, -1)
 export(int) var GRAVITY = 20
 export(int) var ACCELERATION = 50
 export(int) var MAX_SPEED = 200
-export(int) var JUMP_HEIGHT = -550
+export(int) var JUMP_HEIGHT = -400
 var max_jumps = 1
 var jump_count = 0
 export var HP = 100
@@ -19,9 +19,8 @@ var motion = Vector2()
 func _physics_process(delta):
 	# Plusser GRAVITY til Y aksen
 	motion.y += GRAVITY
-	# Sætter variablen friction til false
-	var friction = false
 	
+	"""
 	# Hvis input er piletasten til højre
 	if Input.is_action_pressed("ui_right"):
 		# Sætter hastigheden til motion.x + ACCELERATION og max hastigheden
@@ -42,14 +41,7 @@ func _physics_process(delta):
 		$Sprite.play("Run")
 	# Ellers hvis der ikke er nogle input
 	else:
-		# Kør animationen idle
-		$Sprite.play("idle")
-		# Sætter friction til true
-		friction = true
-		# Laver friktion, hvor vi først angiver vores nuværende hastighed
-		# Derefter hvor langt vi vil ned i fart og derefter procenten af
-		# Hvor hurtigt det skal tage at komme ned til 0
-		motion.x = lerp(motion.x, 0, 0.2)
+		"""
 		
 	# Hvis inputtet er up og at jump_count ikke er større end max_jumps
 	if Input.is_action_just_pressed("ui_up") && jump_count < max_jumps:
@@ -58,13 +50,13 @@ func _physics_process(delta):
 			# Plusser 1 til jump_count
 			jump_count += 1
 	# Hvis spriten er på jorden
+	else:
+		# Kør animationen idle
+		$Sprite.play("Run")
 	if is_on_floor():
 		# Sætter jump_count til 0
 		jump_count = 0
 		# Hvis friction er true
-		if friction == true:
-			# Lav friktion
-			motion.x = lerp(motion.x, 0, 0.2)
 	# Ellers hvis man ikke er på jorden
 	else:
 		# Hvis man er oppe i luften
@@ -75,10 +67,6 @@ func _physics_process(delta):
 		else:
 			# Kør animationen Fall
 			$Sprite.play("Fall")
-		# Hvis friction er true
-		if friction == true:
-			# Lav friktion, hvor procenten er sat ned til 0.05
-			motion.x = lerp(motion.x, 0, 0.05)
 	motion = move_and_slide(motion, UP)
 	pass
 
