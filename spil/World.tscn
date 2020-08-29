@@ -25,8 +25,10 @@ margin_right = -82.6442
 margin_bottom = -173.558
 
 [node name="Label" type="Label" parent="Player"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -83.0419
+margin_top = -135.049
+margin_right = -43.0419
+margin_bottom = -121.049
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,4 +48,5 @@ next_world = "res://World2.tscn"
 wait_time = 3.0
 autostart = true
 [connection signal="HP" from="Player" to="Player/Healthbar" method="_on_Player_HP"]
+[connection signal="HP" from="Player" to="Player/Label" method="_on_Player_HP"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

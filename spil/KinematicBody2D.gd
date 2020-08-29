@@ -79,6 +79,7 @@ func hit(damage):
 	if HP < 0 || HP == 0:
 		# Genstarter scenen
 		get_tree().reload_current_scene()
+		Global.score = 0
 
 func heal(regenerate):
 	# Plusser HP med regenerate
