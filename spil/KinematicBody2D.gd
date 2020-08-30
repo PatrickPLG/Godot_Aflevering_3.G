@@ -69,6 +69,18 @@ func _physics_process(delta):
 			$Sprite.play("Fall")
 	motion = move_and_slide(motion, UP)
 	pass
+	if Input.is_action_pressed("ui_down"):
+		$CollisionShape2D.position.y = 32
+		$CollisionShape2D.rotation_degrees = 90
+		$Sprite.play("Slide")
+	else:
+		$CollisionShape2D.position.y = 18
+		$CollisionShape2D.rotation_degrees = 0
+		$CollisionShape2D.position.y = 10.619
+		
+		
+	
+		
 
 func hit(damage):
 	# Minusser HP med damage
