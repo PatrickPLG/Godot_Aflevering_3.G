@@ -19,29 +19,6 @@ var motion = Vector2()
 func _physics_process(delta):
 	# Plusser GRAVITY til Y aksen
 	motion.y += GRAVITY
-	
-	"""
-	# Hvis input er piletasten til højre
-	if Input.is_action_pressed("ui_right"):
-		# Sætter hastigheden til motion.x + ACCELERATION og max hastigheden
-		# Til MAX_SPEED
-		motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
-		# Flipper ikke spriten
-		$Sprite.flip_h = false
-		# Kører animationen Run
-		$Sprite.play("Run")
-	# Hvis input er piletasten til venstre
-	elif Input.is_action_pressed("ui_left"):
-		# Sætter hastigheden til motion.x - ACCELERATION og max hastigheden
-		# Til -MAX_SPEED
-		motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
-		# Flipper spriten
-		$Sprite.flip_h = true
-		# Kører animationen Run
-		$Sprite.play("Run")
-	# Ellers hvis der ikke er nogle input
-	else:
-		"""
 		
 	# Hvis inputtet er up og at jump_count ikke er større end max_jumps
 	if Input.is_action_just_pressed("ui_up") && jump_count < max_jumps:
@@ -49,10 +26,18 @@ func _physics_process(delta):
 			motion.y = JUMP_HEIGHT
 			# Plusser 1 til jump_count
 			jump_count += 1
-	# Hvis spriten er på jorden
+	elif Input.is_action_pressed("ui_down"):
+		$CollisionShape2D.position.y = 32
+		$CollisionShape2D.rotation_degrees = 90
+		$Sprite.play("Slide")
+	elif Input.is_action_just_released("ui_down"):
+		$Sprite.play("upSlide")
 	else:
-		# Kør animationen idle
-		$Sprite.play("Run")
+		#$Sprite.play("upSlide")
+		$CollisionShape2D.position.y = 18
+		$CollisionShape2D.rotation_degrees = 0
+		$CollisionShape2D.position.y = 10.619
+	# Hvis spriten er på jorden
 	if is_on_floor():
 		# Sætter jump_count til 0
 		jump_count = 0
@@ -68,19 +53,6 @@ func _physics_process(delta):
 			# Kør animationen Fall
 			$Sprite.play("Fall")
 	motion = move_and_slide(motion, UP)
-	pass
-	if Input.is_action_pressed("ui_down"):
-		$CollisionShape2D.position.y = 32
-		$CollisionShape2D.rotation_degrees = 90
-		$Sprite.play("Slide")
-	else:
-		$CollisionShape2D.position.y = 18
-		$CollisionShape2D.rotation_degrees = 0
-		$CollisionShape2D.position.y = 10.619
-		
-		
-	
-		
 
 func hit(damage):
 	# Minusser HP med damage
@@ -102,4 +74,8 @@ func heal(regenerate):
 	if HP > 100 || HP == 100:
 		# Sætter HP til at være 100
 		HP = 100
-	
+
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "upSlide" || $Sprite.animation == "Fall" && is_on_floor() && $Sprite.animation == "upSlide" == false:
+		$Sprite.play("Run")
