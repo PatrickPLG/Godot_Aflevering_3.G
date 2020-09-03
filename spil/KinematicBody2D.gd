@@ -27,9 +27,10 @@ func _physics_process(delta):
 			# Plusser 1 til jump_count
 			jump_count += 1
 	elif Input.is_action_pressed("ui_down"):
-		$CollisionShape2D.position.y = 32
-		$CollisionShape2D.rotation_degrees = 90
-		$Sprite.play("Slide")
+		if is_on_floor():
+			$CollisionShape2D.position.y = 32
+			$CollisionShape2D.rotation_degrees = 90
+			$Sprite.play("Slide")
 	elif Input.is_action_just_released("ui_down"):
 		$Sprite.play("upSlide")
 	else:
@@ -46,6 +47,8 @@ func _physics_process(delta):
 	else:
 		# Hvis man er oppe i luften
 		if motion.y < 0:
+			if Input.is_action_pressed("ui_down"):
+				motion.y = 50
 			# Kør animationen Jump
 			$Sprite.play("Jump")
 		# Ellers hvis vi falder
@@ -56,14 +59,15 @@ func _physics_process(delta):
 
 func hit(damage):
 	# Minusser HP med damage
-	HP -= damage
+	(Global.score) -= damage
 	# Sender et signal ud som hedder HP med valuen HP
 	emit_signal("HP",HP)
 	# Hvis HP er mindre end 0 eller lig med 0
-	if HP < 0 || HP == 0:
+	if (Global.score) < 0 || (Global.score) == 0:
 		# Genstarter scenen
 		get_tree().reload_current_scene()
 		Global.score = 0
+		GlobalSpeed.speed = 1
 
 func heal(regenerate):
 	# Plusser HP med regenerate
