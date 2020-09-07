@@ -56,7 +56,7 @@ func _physics_process(delta):
 			# Kør animationen Fall
 			$Sprite.play("Fall")
 	motion = move_and_slide(motion, UP)
-
+"""
 func hit(damage):
 	# Minusser HP med damage
 	(Global.score) -= damage
@@ -65,10 +65,15 @@ func hit(damage):
 	# Hvis HP er mindre end 0 eller lig med 0
 	if (Global.score) < 0 || (Global.score) == 0:
 		# Genstarter scenen
-		get_tree().reload_current_scene()
-		Global.score = 0
+		#get_tree().reload_current_scene()
+		get_tree().change_scene("res://StartMenu.tscn")
 		GlobalSpeed.speed = 1
+"""
 
+func end_game():
+	get_tree().change_scene("res://StartMenu.tscn")
+
+"""
 func heal(regenerate):
 	# Plusser HP med regenerate
 	HP += regenerate
@@ -78,7 +83,7 @@ func heal(regenerate):
 	if HP > 100 || HP == 100:
 		# Sætter HP til at være 100
 		HP = 100
-
+"""
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "upSlide" || $Sprite.animation == "Fall" && is_on_floor() && $Sprite.animation == "upSlide" == false:
