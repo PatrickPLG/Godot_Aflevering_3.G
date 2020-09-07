@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://WorldComplete.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Label.gd" type="Script" id=5]
 [ext_resource path="res://Healthbar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World.gd" type="Script" id=7]
-[ext_resource path="res://test_enemy.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node"]
 script = ExtResource( 7 )
@@ -50,8 +49,10 @@ next_world = "res://World2.tscn"
 wait_time = 3.0
 autostart = true
 
-[node name="Area2D" parent="." instance=ExtResource( 8 )]
-position = Vector2( 339.501, 184.05 )
-[connection signal="HP" from="Player" to="Player/Label" method="_on_Player_HP"]
+[node name="Scoretimer" type="Timer" parent="."]
+autostart = true
 [connection signal="HP" from="Player" to="Player/Healthbar" method="_on_Player_HP"]
+[connection signal="HP" from="Player" to="Player/Label" method="_on_Player_HP"]
+[connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Scoretimer" to="." method="_on_Scoretimer_timeout"]
