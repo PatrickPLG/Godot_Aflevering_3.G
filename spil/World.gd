@@ -14,7 +14,7 @@ func _on_Timer_timeout():
 		obstacle.position.y = rng.randf_range(223,184.05)
 		add_child(obstacle)
 	else:
-		obstacle2.position.y = rng.randf_range(223,184.05)
+		#obstacle2.position.y = rng.randf_range(223,184.05)
 		add_child(obstacle2)
 
 

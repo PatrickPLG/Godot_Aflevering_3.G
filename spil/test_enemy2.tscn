@@ -5,36 +5,49 @@
 [ext_resource path="res://Area2D.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 32, 64 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 286.174 )
 
 [node name="Area2D" type="Area2D"]
-position = Vector2( 672, 223 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -4.64469e-05, 1 )
+position = Vector2( 531.609, 338.45 )
 scale = Vector2( 1.64103, 1.64103 )
 texture = ExtResource( 1 )
+offset = Vector2( 87.1404, -44.9777 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 531.609, 403.45 )
+scale = Vector2( 1.64103, 1.64103 )
+texture = ExtResource( 1 )
+offset = Vector2( 87.1404, -44.9777 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 531.609, 157.45 )
+scale = Vector2( 1.64103, 1.64103 )
+texture = ExtResource( 1 )
+offset = Vector2( 87.1404, -44.9777 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 531.609, 94.4501 )
+scale = Vector2( 1.64103, 1.64103 )
+texture = ExtResource( 1 )
+offset = Vector2( 87.1404, -44.9777 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 1 )
+position = Vector2( 675, 296 )
 shape = SubResource( 1 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
-[node name="Timer2" type="Timer" parent="."]
-autostart = true
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 675, 52 )
+shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -2.3327, 2.9454 )
+position = Vector2( 672, 128 )
 shape = SubResource( 2 )
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

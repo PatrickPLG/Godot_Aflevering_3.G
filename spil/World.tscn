@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://WorldComplete.tscn" type="PackedScene" id=2]
@@ -7,13 +7,19 @@
 [ext_resource path="res://Label.gd" type="Script" id=5]
 [ext_resource path="res://Healthbar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World.gd" type="Script" id=7]
+[ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://test_enemy2.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 21
+font_data = ExtResource( 8 )
 
 [node name="World" type="Node"]
 script = ExtResource( 7 )
 
 [node name="Node2D" parent="." instance=ExtResource( 4 )]
 show_behind_parent = true
-position = Vector2( 0, -92 )
+position = Vector2( 0, -168 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 111.957, 210.403 )
@@ -26,10 +32,12 @@ margin_right = -82.6442
 margin_bottom = -173.558
 
 [node name="Label" type="Label" parent="Player"]
-margin_left = -83.0419
-margin_top = -135.049
-margin_right = -43.0419
-margin_bottom = -121.049
+margin_left = -88.6887
+margin_top = -157.636
+margin_right = -1.68866
+margin_bottom = -131.636
+custom_fonts/font = SubResource( 1 )
+text = "Score: 10"
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,6 +59,9 @@ autostart = true
 
 [node name="Scoretimer" type="Timer" parent="."]
 autostart = true
+
+[node name="Area2D2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -9.33081, -106.138 )
 [connection signal="HP" from="Player" to="Player/Healthbar" method="_on_Player_HP"]
 [connection signal="HP" from="Player" to="Player/Label" method="_on_Player_HP"]
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
