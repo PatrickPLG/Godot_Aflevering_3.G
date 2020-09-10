@@ -8,7 +8,7 @@ onready var getPlayer = $"../Player"
 
 var speed = 1
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Laver en variable kaldet bodies som finder alt der går over genstanden
 	var bodies = get_overlapping_bodies()
 	# For alt der går over
@@ -17,7 +17,7 @@ func _physics_process(delta):
 		if body.name == "Player":
 			# Bruger funktionen hit til at tildele skaden
 			getPlayer.end_game()
-
+			
 func _process(delta):
 	position.x -= 300 * (delta * (GlobalSpeed.speed))
 	print(speed)
