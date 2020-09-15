@@ -1,26 +1,23 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 1.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Jump sprite 1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Jump sprite 2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 1.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/StickPlayer/Jump sprite 1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/StickPlayer/Jump sprite 2.png" type="Texture" id=3]
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Jump_sprite_3.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 5.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 10.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 7.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Sprites/Sky.png" type="Texture" id=10]
-[ext_resource path="res://TextureRect.gd" type="Script" id=11]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 3.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 8.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Slide_sprite_3.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 4.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Splash screen sprite 3.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Slide_sprite_1.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 6.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Running sprite 9.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Sprites/StickPlayer/Slide_sprite_2.png" type="Texture" id=20]
-[ext_resource path="res://assets/Parallax.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/StickPlayer/Jump_sprite_3.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 5.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 10.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 7.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 3.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 8.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/StickPlayer/Slide_sprite_3.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 4.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/StickPlayer/Splash screen sprite 3.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/StickPlayer/Slide_sprite_1.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 6.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/StickPlayer/Running sprite 9.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/StickPlayer/Slide_sprite_2.png" type="Texture" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -32,11 +29,6 @@ animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 7 ), ExtResource( 18 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Run",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "Jump",
 "speed": 15.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 20 ), ExtResource( 14 ) ],
@@ -53,24 +45,15 @@ animations = [ {
 "loop": false,
 "name": "upSlide",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "Jump",
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 19 )
-
-[sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
-uniform float scroll_speed;
-void fragment() {
-	vec2 shifteduv = UV;
-	shifteduv.x += TIME * scroll_speed;
-	vec4 col = texture(TEXTURE, shifteduv);
-	COLOR = col;
-}"
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
-shader_param/scroll_speed = null
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 4 )
@@ -89,34 +72,6 @@ scale = Vector2( 2, 2 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 222, 0 )
+position = Vector2( 222, -81 )
 current = true
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_scale = Vector2( 0.1, 0.1 )
-motion_mirroring = Vector2( 640, 640 )
-
-[node name="Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -3.13263, 25.5131 )
-texture = ExtResource( 10 )
-centered = false
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-show_behind_parent = true
-material = SubResource( 4 )
-margin_left = -98.5408
-margin_top = -180.38
-margin_right = 541.459
-margin_bottom = 459.62
-texture = ExtResource( 21 )
-stretch_mode = 2
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-scroll_speed = 0.05
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
