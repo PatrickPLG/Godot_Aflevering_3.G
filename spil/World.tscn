@@ -1,18 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://WorldComplete.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Minecraft.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://DirtAutoTile.tres" type="TileSet" id=3]
 [ext_resource path="res://background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Label.gd" type="Script" id=5]
-[ext_resource path="res://Healthbar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World.gd" type="Script" id=7]
-[ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://test_enemy2.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 21
-font_data = ExtResource( 8 )
+font_data = ExtResource( 2 )
 
 [node name="World" type="Node"]
 script = ExtResource( 7 )
@@ -21,37 +18,27 @@ script = ExtResource( 7 )
 show_behind_parent = true
 position = Vector2( 0, -168 )
 
+[node name="YSort" type="YSort" parent="."]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 111.957, 210.403 )
 
-[node name="Healthbar" parent="Player" instance=ExtResource( 6 )]
-visible = false
-margin_left = -82.6442
-margin_top = -173.558
-margin_right = -82.6442
-margin_bottom = -173.558
-
 [node name="Label" type="Label" parent="Player"]
-margin_left = -88.6887
-margin_top = -157.636
-margin_right = -1.68866
-margin_bottom = -131.636
+margin_left = 385.043
+margin_top = -250.403
+margin_right = 537.043
+margin_bottom = -224.403
 custom_fonts/font = SubResource( 1 )
-text = "Score: 10"
+text = "Score - 100000"
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TileMap" type="TileMap" parent="."]
-show_behind_parent = true
 tile_set = ExtResource( 3 )
 format = 1
 tile_data = PoolIntArray( 327679, 3, 1, 262144, 3, 65536, 262145, 3, 65536, 262146, 3, 65536, 262147, 3, 65536, 262148, 3, 65536, 262149, 3, 65536, 262150, 3, 65536, 262151, 3, 65536, 262152, 3, 65536, 262153, 3, 65536, 262154, 3, 65536, 262155, 3, 65536, 262156, 3, 65536, 262157, 3, 65536, 262158, 3, 65536, 262159, 3, 65536, 262160, 3, 65536, 262161, 3, 65536, 262162, 3, 65536, 262163, 3, 65536, 262164, 3, 65536, 262165, 3, 65536, 262166, 3, 65536, 262167, 3, 65536, 262168, 3, 65536, 262169, 3, 65536, 262170, 3, 65536, 262171, 3, 65536, 262172, 3, 65536, 262173, 3, 65536, 262174, 3, 65536, 262175, 3, 65536, 262176, 3, 65536, 262177, 3, 65536, 262178, 3, 2, 393215, 3, 131073, 327680, 3, 196619, 327681, 3, 196619, 327682, 3, 196619, 327683, 3, 196619, 327684, 3, 196619, 327685, 3, 196619, 327686, 3, 196619, 327687, 3, 196619, 327688, 3, 196619, 327689, 3, 196619, 327690, 3, 196619, 327691, 3, 196619, 327692, 3, 196619, 327693, 3, 196619, 327694, 3, 196619, 327695, 3, 196619, 327696, 3, 196619, 327697, 3, 196619, 327698, 3, 196619, 327699, 3, 196619, 327700, 3, 196619, 327701, 3, 196619, 327702, 3, 196619, 327703, 3, 196619, 327704, 3, 196619, 327705, 3, 196619, 327706, 3, 196619, 327707, 3, 196619, 327708, 3, 196619, 327709, 3, 196619, 327710, 3, 196619, 327711, 3, 196619, 327712, 3, 196619, 327713, 3, 196619, 327714, 3, 65539, 327715, 3, 2, 458751, 3, 131073, 393216, 3, 196619, 393217, 3, 196619, 393218, 3, 196619, 393219, 3, 196619, 393220, 3, 196619, 393221, 3, 196619, 393222, 3, 196619, 393223, 3, 196619, 393224, 3, 196619, 393225, 3, 196619, 393226, 3, 196619, 393227, 3, 196619, 393228, 3, 196619, 393229, 3, 196619, 393230, 3, 196619, 393231, 3, 196619, 393232, 3, 196619, 393233, 3, 196619, 393234, 3, 196619, 393235, 3, 196619, 393236, 3, 196619, 393237, 3, 196619, 393238, 3, 196619, 393239, 3, 196619, 393240, 3, 196619, 393241, 3, 196619, 393242, 3, 196619, 393243, 3, 196619, 393244, 3, 196619, 393245, 3, 196619, 393246, 3, 196619, 393247, 3, 196619, 393248, 3, 196619, 393249, 3, 196619, 393250, 3, 196619, 393251, 3, 65539, 393252, 3, 65536, 393253, 3, 2, 524287, 3, 131073, 458752, 3, 196619, 458753, 3, 196619, 458754, 3, 196619, 458755, 3, 196619, 458756, 3, 196619, 458757, 3, 196619, 458758, 3, 196619, 458759, 3, 196619, 458760, 3, 196619, 458761, 3, 196619, 458762, 3, 196619, 458763, 3, 196619, 458764, 3, 196619, 458765, 3, 196619, 458766, 3, 196619, 458767, 3, 196619, 458768, 3, 196619, 458769, 3, 196619, 458770, 3, 196619, 458771, 3, 196619, 458772, 3, 196619, 458773, 3, 196619, 458774, 3, 196619, 458775, 3, 196619, 458776, 3, 196619, 458777, 3, 196619, 458778, 3, 196619, 458779, 3, 196619, 458780, 3, 196619, 458781, 3, 196619, 458782, 3, 196619, 458783, 3, 196619, 458784, 3, 196619, 458785, 3, 196619, 458786, 3, 196619, 458787, 3, 196619, 458788, 3, 196619, 458789, 3, 131074, 589823, 3, 65537, 524288, 3, 131072, 524289, 3, 131072, 524290, 3, 131072, 524291, 3, 131072, 524292, 3, 131072, 524293, 3, 131072, 524294, 3, 131072, 524295, 3, 131072, 524296, 3, 131072, 524297, 3, 131072, 524298, 3, 131072, 524299, 3, 131072, 524300, 3, 131072, 524301, 3, 131072, 524302, 3, 131072, 524303, 3, 131072, 524304, 3, 131072, 524305, 3, 131072, 524306, 3, 131072, 524307, 3, 131072, 524308, 3, 131072, 524309, 3, 131072, 524310, 3, 131072, 524311, 3, 131072, 524312, 3, 131072, 524313, 3, 131072, 524314, 3, 131072, 524315, 3, 131072, 524316, 3, 131072, 524317, 3, 131072, 524318, 3, 131072, 524319, 3, 131072, 524320, 3, 131072, 524321, 3, 131072, 524322, 3, 131072, 524323, 3, 131072, 524324, 3, 131072, 524325, 3, 65538 )
-
-[node name="WorldComplete" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2377.48, 370.186 )
-next_world = "res://World2.tscn"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
@@ -59,10 +46,6 @@ autostart = true
 
 [node name="Scoretimer" type="Timer" parent="."]
 autostart = true
-
-[node name="Area2D2" parent="." instance=ExtResource( 9 )]
-position = Vector2( -9.33081, -106.138 )
-[connection signal="HP" from="Player" to="Player/Healthbar" method="_on_Player_HP"]
 [connection signal="HP" from="Player" to="Player/Label" method="_on_Player_HP"]
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

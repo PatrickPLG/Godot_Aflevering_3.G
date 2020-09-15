@@ -2,7 +2,9 @@
 extends Control
 
 func _ready():
+	# Hvis den global variable score er større end den globale high_score
 	if Global.score > Global.high_score:
+			# Set den globale highscore til den globale score
 			Global.high_score = Global.score
 	
 	$CenterContainer2/VBoxContainer/HighScoreText.text = "Highscore: " + str(Global.high_score)
