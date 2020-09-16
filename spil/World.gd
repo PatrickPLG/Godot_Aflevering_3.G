@@ -50,27 +50,27 @@ func _on_Timer_timeout():
 			# Indsætter obstacle2 som child i Ysort
 			$YSort.add_child(obstacle2)
 	# Hvis spawnrate er over 10
-	if spawnrate > 10:
+	if spawnrate > 10 && spawnrate < 20:
 		# Sæt timerens wait_time til 2.5 sek
 		$Timer.wait_time = 2.5
 	# Hvis spawnrate er over 20
-	if spawnrate > 20:
+	if spawnrate > 20 && spawnrate < 30:
 		# Sæt timerens wait_time til 2.25 sek
 		$Timer.wait_time = 2.25
 	# Hvis spawnrate er over 30
-	if spawnrate > 30:
+	if spawnrate > 30 && spawnrate < 40:
 		# Sæt timerens wait_time til 2 sek
 		$timer.wait_time = 2
 	# Hvis spawnrate er over 40
-	if spawnrate > 40:
+	if spawnrate > 40 && spawnrate < 50:
 		# Sæt timerens wait_time til 1.75 sek
 		$timer.wait_time = 1.75
 	# Hvis spawnrate er over 50
-	if spawnrate > 50:
+	if spawnrate > 50 && spawnrate < 60:
 		# Sæt timerens wait_time til 1.5 sek
 		$timer.wait_time = 1.5
 	# Hvis spawnrate er over 60
-	if spawnrate > 60:
+	if spawnrate > 60 && spawnrate < 70:
 		# Sæt timerens wait_time til 1.25 sek
 		$timer.wait_time = 1.25
 	# Hvis spawnrate er over 70
