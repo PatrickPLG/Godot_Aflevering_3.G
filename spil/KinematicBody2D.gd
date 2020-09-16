@@ -1,17 +1,11 @@
 extends KinematicBody2D
 
-# Signaler
-signal HP
-
 # Konstante variabler
 const UP = Vector2(0, -1)
 export(int) var GRAVITY = 20
-export(int) var ACCELERATION = 50
-export(int) var MAX_SPEED = 200
 export(int) var JUMP_HEIGHT = -400
 var max_jumps = 1
 var jump_count = 0
-export var HP = 100
 
 # Varible som er lig med 2d vector
 var motion = Vector2()
@@ -21,7 +15,7 @@ func _physics_process(delta):
 	motion.y += GRAVITY	
 	# Hvis inputtet er up og at jump_count ikke er større end max_jumps
 	if Input.is_action_just_pressed("ui_up") && jump_count < max_jumps:
-			# Plusser JUMP_HEIGHT til motion.y som går at spriten hopper
+			# Plusser JUMP_HEIGHT til motion.y som gør at spriten hopper
 			motion.y = JUMP_HEIGHT
 			# Plusser 1 til jump_count
 			jump_count += 1
