@@ -8,7 +8,7 @@ const obstacle2_preload = preload("res://test_enemy2.tscn")
 var rng = RandomNumberGenerator.new()
 
 # Variable spawnrate som sættes til 0
-var spawnrate = 8
+var spawnrate = 0
 
 # Når timeren løber ud
 func _on_Timer_timeout():
